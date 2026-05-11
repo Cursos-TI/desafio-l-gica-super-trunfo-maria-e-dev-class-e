@@ -1,43 +1,69 @@
 #include <stdio.h>
 
-// Desafio Super Trunfo - Países
-// Tema 2 - Comparação das Cartas
-// Este código inicial serve como base para o desenvolvimento do sistema de comparação de cartas de cidades. 
-// Siga os comentários para implementar cada parte do desafio.
-
 int main() {
-    // Definição das variáveis para armazenar as propriedades das cidades
-    // Você pode utilizar o código do primeiro desafio
+    // Agrupei as variáveis para economizar espaço e melhorar a leitura
+    char name1[50], album1[50], name2[50], album2[50];
+    int sales1, grammys1, year1, sales2, grammys2, year2;
+    float streams1, streams2, success1, success2; // success será igual a sales (vendas estimadas / streams no spotify)
+    char s_suf1, st_suf1, s_suf2, st_suf2;
+    /* s_suf1 e st_suf1 (char) servem como "coletores" para o caractere que vem após o número (ex: o 'm' de 300m).
+     Elas limpam o buffer do teclado, impedindo que letras fiquem "presas" e façam o próximo scanf falhar ao tentar ler um número.*/
 
-    
-    // Cadastro das Cartas:
-    // Implemente a lógica para solicitar ao usuário que insira os dados das cidades
-    // utilizando a função scanf para capturar as entradas.
-    // utilize o código do primeiro desafio
+    // Cadastro - DIVA 1
+    printf("=== First Diva Registration ===\n");
+    printf("Name: ");
+    scanf(" %[^\n]", name1);
+    printf("Debut album: ");
+    scanf(" %[^\n]", album1);
+    printf("Total of estimated sales (ex: 300m): ");
+    scanf("%d%c", &sales1, &s_suf1); //coloquei _suffix e %c pra ler o m de milhão
+    printf("Total of Grammys won: ");
+    scanf("%d", &grammys1);
+    printf("Total of Spotify Streams (ex: 40m): ");
+    scanf("%f%c", &streams1, &st_suf1); //coloquei _suffix e %c pra ler o m de milhão
+    printf("Birth year: ");
+    scanf("%d", &year1);
 
-    // Exemplo:
-    // printf("Digite o código da cidade: ");
-    // scanf("%s", codigo);
-    // 
-    // (Repita para cada propriedade)
+    // Cálculo Diva 1 (Vendas / Streams)
+    success1 = (float)sales1 / streams1;
+    /* resolvi fazer essa conta pra deixar uma competição mais complexa, é melhor do que simplesmente comparar vendas ou numero de grammys com < ou > fica mais dicil de dar empate */
 
-    // Comparação de Cartas:
-    // Desenvolva a lógica de comparação entre duas cartas.
-    // Utilize estruturas de decisão como if, if-else para comparar atributos como população, área, PIB, etc.
+    // Cadastro - DIVA 2
+    printf("\n=== Second Diva Registration ===\n");
+    printf("Name: ");
+    scanf(" %[^\n]", name2);
+    printf("Debut album: ");
+    scanf(" %[^\n]", album2);
+    printf("Total of estimated sales (ex: 300m): ");
+    scanf("%d%c", &sales2, &s_suf2); //coloquei _suffix e %c pra ler o m de milhão
+    printf("Total of Grammys won: ");
+    scanf("%d", &grammys2);
+    printf("Total of Spotify Streams (ex: 40m): ");
+    scanf("%f%c", &streams2, &st_suf2); //coloquei _suffix e %c pra ler o m de milhão
+    printf("Birth year: ");
+    scanf("%d", &year2);
 
-    // Exemplo:
-    // if (populacaoA > populacaoB) {
-    //     printf("Cidade 1 tem maior população.\n");
-    // } else {
-    //     printf("Cidade 2 tem maior população.\n");
-    // }
+    // Cálculo Diva 2
+    success2 = (float)sales2 / streams2;
 
-    // Exibição dos Resultados:
-    // Após realizar as comparações, exiba os resultados para o usuário.
-    // Certifique-se de que o sistema mostre claramente qual carta venceu e com base em qual atributo.
+    // --- Comparação de Atributo: SUCCESS ---
+    // Regra: O MENOR valor vence. o menor valor pois, ganha quem precisou de menos streams para gerar uma venda, success representa eficiência.
 
-    // Exemplo:
-    // printf("A cidade vencedora é: %s\n", cidadeVencedora);
+    printf("\nDiva comparison (Atribute: Success - Sales/Streams):\n\n");
+    printf("D.I.V.A. 1 - %s: %.4f\n", name1, success1);
+    printf("D.I.V.A. 2 - %s: %.4f\n", name2, success2);
+
+    // Lógica de decisão: No caso de success, usamos o operador '<'
+    if (success1 < success2) {
+        printf("Result: D.I.V.A. 1 (%s) won!\n", name1);
+        // O 'if' testa se o valor da Diva 1 é menor; se verdadeiro, ela vence.
+    } else if (success2 < success1) {
+        printf("Result: D.I.V.A. 2 (%s) won!\n", name2);
+        // O 'else if' testa a condição oposta (Diva 2 menor) caso a primeira seja falsa.
+    } else {
+        printf("Result: it's a draw!\n");
+        // O 'else' trata o único cenário restante: quando os valores são iguais (empate).
+    }
 
     return 0;
 }
