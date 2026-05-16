@@ -84,3 +84,5 @@ g++ main.cpp -o super_trunfo
 ./super_trunfo
 
 ```
+#OU abrir o seguinte link no seu navegador e apagar o codigo base contendo "hello world" e colar o código feito por mim!
+https://www.mycompiler.io/pt/new/cpp
