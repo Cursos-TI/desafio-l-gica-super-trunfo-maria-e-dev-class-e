@@ -58,89 +58,63 @@ int main() {
         printf("\n Option: \n");
         scanf("%d",&option);
 
-    //hora do switch
-    switch (option) {
+    //aplicando o operador ternário na estruturação do switch
+        switch (option) {
 
-        case 1:
-            printf("\nSales Comparison\n");
+            case 1:
+                printf("\nSales Comparison\n");
+                printf("%s: %dm\n", name1, sales1);
+                printf("%s: %dm\n", name2, sales2);
 
-            printf("%s: %dm\n", name1, sales1);
-            printf("%s: %dm\n", name2, sales2);
-                if (sales1 > sales2) {
-                    printf("Winner is %s\n", name1);
-                    }
-
-                else if (sales1 < sales2) {
-                   printf("Winner is %s\n", name2);
-                    }
-
-                else {
+                if (sales1 == sales2) {
                     printf("It's a draw!\n");
+                } else {
+                    printf("Winner is %s\n", (sales1 > sales2) ? name1 : name2);
                 }
-            break;
+                break;
 
             case 2:
-            printf("\nGrammys Comparison\n");
+                printf("\nGrammys Comparison\n");
+                printf("%s: %dm\n", name1, grammys1);
+                printf("%s: %dm\n", name2, grammys2);
 
-            printf("%s: %dm\n", name1, grammys1);
-            printf("%s: %dm\n", name2, grammys2);
-
-                if (grammys1 > grammys2) {
-                printf("Winner is %s\n", name1);
-            }
-                else if (grammys1 < grammys2) {
-                printf("Winner is %s\n", name2);
-            }
-                else {
-                printf("It's a draw!\n");
-            }
-
-            break;
+                if (grammys1 == grammys2) {
+                    printf("It's a draw!\n");
+                } else {
+                    printf("Winner is %s\n", (grammys1 > grammys2) ? name1 : name2);
+                }
+                break;
 
             case 3:
-            printf("\nStreams Comparison\n");
+                printf("\nStreams Comparison\n");
+                printf("%s: %fm\n", name1, streams1);
+                printf("%s: %fm\n", name2, streams2);
 
-            printf("%s: %fm\n", name1, streams1);
-            printf("%s: %fm\n", name2, streams2);
-
-            if (streams1 > streams2) {
-                printf("Winner is %s\n", name1);
-            }
-
-            else if (streams1 < streams2) {
-                printf("Winner is %s\n", name2);
-            }
-
-            else {
-                printf("It's a draw!\n");
-            }
-
-            break;
+                if (streams1 == streams2) {
+                    printf("It's a draw!\n");
+                } else {
+                    printf("Winner is %s\n", (streams1 > streams2) ? name1 : name2);
+                }
+                break;
 
             case 4:
-            printf("\nSuccess Comparison\n");
+                printf("\nSuccess Comparison\n");
+                printf("%s: %fm\n", name1, success1);
+                printf("%s: %fm\n", name2, success2);
 
-            printf("%s: %fm\n", name1, success1);
-            printf("%s: %fm\n", name2, success2);
-
-            //menor valor vence
-            if (success1 > success2) {
-                printf("Winner is %s\n", name2);
-            }
-            else if (success1 < success2) {
-                printf("Winner is %s\n", name1);
-            }
-            else {
-                printf("It's a draw!\n");
-            }
-
-            break;
+                if (success1 == success2) {
+                    printf("It's a draw!\n");
+                } else {
+                    // Menor valor vence aqui (Sales/Streams)
+                    printf("Winner is %s\n", (success1 < success2) ? name1 : name2);
+                }
+                break;
 
             default:
-            printf("\nInvalid option\n");
-
-    }
+                printf("\nInvalid option\n");
+                break;
+        }
 
     return 0;
-}
+    }
 
